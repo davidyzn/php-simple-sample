@@ -8,10 +8,7 @@
 <p>一段文本。</p>
 
 <?php 
-$s=ini_get('include_path');
-ini_set($s . PATH_SEPARATOR . '/www/');
-
-include '/015.php';
+include 'includes/015.php';
 ?>
 </body>
 </html>
