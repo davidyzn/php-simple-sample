@@ -63,4 +63,7 @@ $words['title']; ?></p></td>
 <td valign="top" nowrap="nowrap" width="10%"><b>
 <?php 
 echo '<a href="index.php' class="navlink">'.$words['home'].'</a><br />
-<a href="forum.php" class="navlink">'
+<a href="forum.php" class="navlink">'.$words['forum_home'].'</a><br />';
+if(isset($_SESSION['user_id'])){
+	if(basename($_SERVER['PHP_SELF']))
+}
