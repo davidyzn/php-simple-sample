@@ -65,6 +65,34 @@ $words['title']; ?></p></td>
 echo '<a href="index.php' class="navlink">'.$words['home'].'</a><br />
 <a href="forum.php" class="navlink">'.$words['forum_home'].'</a><br />';
 if(isset($_SESSION['user_id'])){
-	if(basename($_SERVER['PHP_SELF']))
+	if(basename($_SERVER['PHP_SELF'])=='forum.php'){
+		echo '<a href="post.php" class="navlink">'.$words['new_thread'].'</a><br />';
+	}
+	echo '<a href="logout.php" class="navlink">'.$words['logout'].'</a><br />';
+
+}else{
+	echo '<a href="register.php" class="navlink">'.$words['register'].'</a><br />
+	<a href="login.php" class="navlink">'.$words['login'].'</a><br />';
 }
+
+echo '<br><p><form action="forum.php" method="get">
+<select name="lid">
+<option value="o">'.$words['language'].'</option>
+';
+
+$q="SELECT lang_id,lang from langgues order by lang_eng asc";
+$r=mysqli_query($dbc,$q);
+if(mysqli_num_rows($r)>0){
+	while($menu_row=mysqli_fetch_array($r,MYSQLI_NUM)){
+		echo "<option value=\ "$menu_row[0]\">$menu_row[1]</option>\n";
+	}
+}
+mysqli_free_result($r);
+echo '</select><br />
+<input name="submit" type="submit" value="'.$words['submit'].'"/>
+</form></p>
+</td>
+<td valign="top" class="content">';
+?>
+
 
